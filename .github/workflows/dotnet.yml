@@ -15,6 +15,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+    - name: Setup MSBuild path
+      uses: microsoft/setup-msbuild@v1.0.2
+        
 #    - name: Setup .NET
 #      uses: actions/setup-dotnet@v2
 #      with:
@@ -30,7 +33,7 @@ jobs:
 #      run: dotnet restore
       
     - name: Build
-      run: dotnet build
+      run: msbuild /nologo /verbosity:m /t:Build
       
     - name: Test
       run: dotnet test --no-build --verbosity normal
