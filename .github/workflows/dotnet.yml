@@ -9,17 +9,10 @@ on:
 
 jobs:
   build:
-
-    runs-on: windows-latest
+    runs-on: windows-2019
 
     steps:
     - uses: actions/checkout@v2
-    
-    - name: Setup MSBuild path
-      uses: microsoft/setup-msbuild@v1.1
-      with:
-        vs-version: '16.11.5'
-        msbuild-architecture: 'x64'
         
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
@@ -33,7 +26,6 @@ jobs:
       run: nuget restore
       
     - name: Build
-      run: msbuild /nologo /verbosity:m /t:Build
+      run: '"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\devenv" "D:\a\Rock\Rock\Rock.sln" /build Release'
+      shell: cmd
       
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
