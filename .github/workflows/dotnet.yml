@@ -19,20 +19,21 @@ jobs:
       uses: microsoft/setup-msbuild@v1.1
       with:
         vs-version: '16.11.5'
+        msbuild-architecture: 'x64'
         
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 5.0.408
         
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.5
+#    - name: Setup NuGet
+#      uses: NuGet/setup-nuget@v1.0.5
         
-    - name: Restore NuGet packages
-      run: nuget restore
+#    - name: Restore NuGet packages
+#      run: nuget restore
         
-#    - name: Restore dependencies
-#      run: dotnet restore
+    - name: Restore dependencies
+      run: dotnet restore
       
     - name: Build
       run: msbuild /nologo /verbosity:m /t:Build
