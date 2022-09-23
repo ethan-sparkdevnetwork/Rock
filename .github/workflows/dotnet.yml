@@ -28,6 +28,7 @@ jobs:
     - name: Build
       run: '"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\devenv" "D:\a\Rock\Rock\Rock.sln" /build Release'
       shell: cmd
+      continue-on-error: true
       
     - name: Package
       run: dotnet nuget add source --username ethan-sparkdevnetwork --password ${{ secrets.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  }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/ethan-sparkdevnetwork/index.json"
